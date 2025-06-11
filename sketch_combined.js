@@ -9,7 +9,7 @@ let trafficAlertSound, resolutionAlertSound;
 function preload() {
   // Cargar los archivos MP3
   trafficAlertSound = loadSound("traffic.mp3");
-  resolutionAlertSound = loadSound("Climb.mp3");
+  resolutionAlertSound = loadSound("climb.mp3");
 }
 
 function setup() {
