@@ -28,7 +28,7 @@ function draw() {
   //Calculo de la distancia entre las aeronaves A y B
   let distance = dist(planeA.x, planeA.y, planeB.x, planeB.y);
   textSize(10);
-  text("Distancia vertical: " + round(distance*10) + " ft", 10, 100);
+  text("Distancia vertical: " + round(distance*10,1) + " ft", 10, 100);
   // Estado lógico del TCAS
   if (distance < raDistance && state !== "evasive") {
     if (state !== "RA") {
