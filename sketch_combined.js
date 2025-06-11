@@ -3,7 +3,7 @@ let state = "normal";
 let alertDistance = 120;
 let raDistance = 85;
 let largoRA = 85 * 1.5;
-let largoTA = 120 * 1.5:
+let largoTA = 120 * 1.5;
 
 // 🎧 Archivos de sonido
 let trafficAlertSound, resolutionAlertSound;
