@@ -62,14 +62,16 @@ function draw() {
     stroke(255, 255, 50);
 //    stroke(255, 150, 0, 150);
     strokeWeight(4);
-    noFill();
+    fill(255,255,50,50);
+    //noFill();
     ellipse(planeA.x, planeA.y, alertDistance * 2);
     ellipse(planeB.x, planeB.y, alertDistance * 2);
   }
 
   if (state === "RA" || state === "evasive") {
     stroke(255, 0, 0, 150);
-    noFill();
+    //noFill();
+    fill(255,0,0,50);
     ellipse(planeA.x, planeA.y, raDistance * 2);
     ellipse(planeB.x, planeB.y, raDistance * 2);
   }
