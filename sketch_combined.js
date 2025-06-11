@@ -1,92 +1,67 @@
-
 let planeA, planeB;
 let state = "normal";
 let alertDistance = 200;
 let raDistance = 80;
 
-// Sonidos
-let trafficAlertSound, climbSound, descendSound, clearSound;
-let playedRA = false;
-let playedClear = false;
+// 🎧 Archivos de sonido
+let trafficAlertSound, resolutionAlertSound;
 
 function preload() {
+  // Cargar los archivos MP3
   trafficAlertSound = loadSound("traffic.mp3");
-  climbSound = loadSound("climb.mp3");
-  descendSound = loadSound("descend.mp3");
-  clearSound = loadSound("clear.mp3");
+  resolutionAlertSound = loadSound("Climb.mp3");
 }
 
 function setup() {
   createCanvas(800, 400);
-  let controls = createDiv().style('text-align', 'center').style('margin', '20px');
-
-  createElement('h2', 'Panel de Control TCAS').parent(controls).style('color', 'white');
-
-  createButton('🔊 Traffic Alert')
-    .mousePressed(() => trafficAlertSound.play())
-    .parent(controls)
-    .style('margin', '5px');
-
-  createButton('⬆️ Climb')
-    .mousePressed(() => climbSound.play())
-    .parent(controls)
-    .style('margin', '5px');
-
-  createButton('⬇️ Descend')
-    .mousePressed(() => descendSound.play())
-    .parent(controls)
-    .style('margin', '5px');
-
-  createButton('✅ Clear of Conflict')
-    .mousePressed(() => clearSound.play())
-    .parent(controls)
-    .style('margin', '5px');
-
-  planeA = { x: 100, y: 150, vx: 2, vy: 0 };
-  planeB = { x: 700, y: 250, vx: -2, vy: 0 };
+  planeA = { x: 100, y: 200, vx: 0.5};
+  planeB = { x: 700, y: 250, vx: -0.5};
   textFont('monospace');
 }
 
 function draw() {
-  background(20, 30, 40);
-  fill(255);
-  textSize(16);
-  text("TCAS DEMO + Control Manual", 10, 20);
-
+  background(50, 255, 255); //fondo del canva
+  fill("blue");
+  textSize(20);
+  text("TCAS DEMO", 10, 20);
+  
+  //Calculo de la distancia entre las aeronaves A y B
   let distance = dist(planeA.x, planeA.y, planeB.x, planeB.y);
 
+  // Estado lógico del TCAS
   if (distance < raDistance && state !== "evasive") {
     if (state !== "RA") {
-      climbSound.play();
-      descendSound.play();
+      resolutionAlertSound.play(); // 🛑 Play solo una vez
     }
     state = "RA";
   } else if (distance < alertDistance && state === "normal") {
-    trafficAlertSound.play();
+    trafficAlertSound.play(); // ⚠️ Play solo una vez
     state = "TA";
   }
 
+  // Evasión
   if (state === "RA") {
     state = "evasive";
-    planeA.vy = -1.2;
-    planeB.vy = 1.2;
+    planeA.vy = -0.75;
+    planeB.vy = 0.75;
   }
 
+  // Actualización de posición
   planeA.x += planeA.vx;
-  planeA.y += planeA.vy;
   planeB.x += planeB.vx;
-  planeB.y += planeB.vy;
-
-  if (state === "evasive" && distance > alertDistance && !playedClear) {
-    clearSound.play();
-    playedClear = true;
+  if (state === "evasive") {
+    planeA.y += planeA.vy;
+    planeB.y += planeB.vy;
   }
 
+  // Dibujar aviones y zonas
   drawPlane(planeA.x, planeA.y, "A");
   drawPlane(planeB.x, planeB.y, "B");
 
   if (state === "TA" || state === "RA" || state === "evasive") {
-    stroke(255, 150, 0, 150);
+    stroke(255, 255, 50);
+//    stroke(255, 150, 0, 150);
+    strokeWeight(4);
     noFill();
     ellipse(planeA.x, planeA.y, alertDistance * 2);
     ellipse(planeB.x, planeB.y, alertDistance * 2);
@@ -99,23 +74,33 @@ function draw() {
     ellipse(planeB.x, planeB.y, raDistance * 2);
   }
 
-  fill(255);
+  // Mensajes TCAS
+  fill("blue");
   textSize(18);
+  textAlign(LEFT);
+  strokeWeight(1);
   if (state === "TA") {
-    text("TRAFFIC ALERT!", width / 2 - 80, 30);
+    //text("TRAFFIC ALERT!", width / 2 - 80, 30);
+    fill("yelow");
+    text("TRAFFIC ALERT!", 10, 50);
   } else if (state === "RA") {
-    text("RESOLUTION ADVISORY!", width / 2 - 110, 30);
+    fill("red");
+    text("RESOLUTION ADVISORY!", 10, 50);
   } else if (state === "evasive") {
-    text("MANEUVERING TO AVOID CONFLICT", width / 2 - 150, 30);
+    fill("red");
+    text("MANIOBRA PARA EVITAR EL CONFLICTO", 10,50);
+  } else {
+    //fill("red");
+    text("                                 ", 10,50);
   }
 }
 
 function drawPlane(x, y, label) {
   push();
   fill(100, 200, 255);
-  noStroke();
+  //noStroke();
   ellipse(x, y, 20, 10);
-  fill(255);
+  fill("blue");
   textSize(12);
   textAlign(CENTER);
   text(label, x, y - 10);
