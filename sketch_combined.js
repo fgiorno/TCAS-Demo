@@ -2,6 +2,8 @@ let planeA, planeB;
 let state = "normal";
 let alertDistance = 120;
 let raDistance = 85;
+let largoRA = 85 * 1.5;
+let largoTA = 120 * 1.5:
 
 // 🎧 Archivos de sonido
 let trafficAlertSound, resolutionAlertSound;
@@ -27,8 +29,8 @@ function draw() {
   
   //Calculo de la distancia entre las aeronaves A y B
   let distance = dist(planeA.x, planeA.y, planeB.x, planeB.y);
-  textSize(10);
-  text("Distancia vertical: " + round(distance*10,1) + " ft", 10, 200);
+  textSize(15);
+  text("Distancia vertical: " + round(distance*10,1) + " ft", 10, 100);
   // Estado lógico del TCAS
   if (distance < raDistance && state !== "evasive") {
     if (state !== "RA") {
@@ -65,8 +67,10 @@ function draw() {
     strokeWeight(4);
     fill(255,255,50,50);
     //noFill();
-    ellipse(planeA.x, planeA.y, alertDistance * 2);
-    ellipse(planeB.x, planeB.y, alertDistance * 2);
+    //ellipse(planeA.x, planeA.y, alertDistance * 2);
+    //ellipse(planeB.x, planeB.y, alertDistance * 2);
+    rect(planeA.x - largoTA*2/3, planeA.y + alertDistance, largoTA, alertDistance * 2);
+    rect(planeB.x - largoTA*2/3, planeB.y + alertDistance, largoTA, alertDistance * 2);
   }
 
   if (state === "RA" || state === "evasive") {
