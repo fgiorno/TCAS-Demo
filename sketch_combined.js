@@ -77,10 +77,10 @@ function draw() {
     stroke(255, 0, 0, 150);
     //noFill();
     fill(255,0,0,50);
-    ellipse(planeA.x, planeA.y, raDistance * 2);
-    ellipse(planeB.x, planeB.y, raDistance * 2);
-  rect(planeA.x + largoRA*2/3, planeA.y - raDistance, largoRA, raDistance * 2);
-    rect(planeB.x - largoRA*2/3, planeB.y * raDistance, largoRA, raDistance * 2);
+    //ellipse(planeA.x, planeA.y, raDistance * 2);
+    //ellipse(planeB.x, planeB.y, raDistance * 2);
+    rect(planeA.x + largoRA, planeA.y - raDistance*2/3, largoRA, raDistance * 2);
+    rect(planeB.x - largoRA, planeB.y * raDistance*2/3, largoRA, raDistance * 2);
 }
 
   // Mensajes TCAS
