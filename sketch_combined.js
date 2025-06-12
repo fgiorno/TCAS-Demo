@@ -15,9 +15,9 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(1800, 800);
-  planeA = { x: 100, y: 350, vx: 0.5};
-  planeB = { x: 1700, y: 450, vx: -0.5};
+  createCanvas(1600, 600);
+  planeA = { x: 100, y: 250, vx: 0.5};
+  planeB = { x: 1500, y: 350, vx: -0.5};
   textFont('monospace');
 }
 
