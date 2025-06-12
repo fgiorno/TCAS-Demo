@@ -25,7 +25,7 @@ function draw() {
   background(50, 255, 255); //fondo del canva
   fill("red");
   textSize(20);
-  text("TCAS DEMO V9", 10, 20);
+  text("TCAS DEMO V01", 10, 20);
   
   //Calculo de la distancia entre las aeronaves A y B
   let distance = dist(planeA.x, planeA.y, planeB.x, planeB.y);
@@ -60,8 +60,16 @@ function draw() {
   // Dibujar aviones y zonas
   drawPlane(planeA.x, planeA.y, "A");
   drawPlane(planeB.x, planeB.y, "B");
+  strokeWeight(4);
+    fill(255,255,50,50);
+    rect(planeA.x - largoTA*1/3, planeA.y - alertDistance, largoTA, alertDistance*2);
+    rect(planeB.x - largoTA*2/3, planeB.y - alertDistance, largoTA, alertDistance*2);
+    fill(255,0,0,50);
+    rect(planeA.x - largoRA*1/3, planeA.y - raDistance, largoRA, raDistance*2);
+    rect(planeB.x - largoRA*2/3, planeB.y - raDistance, largoRA, raDistance*2);
+  
 
-  if (state === "TA" || state === "RA" || state === "evasive") {
+  /*if (state === "TA" || state === "RA" || state === "evasive") {
     stroke(255, 255, 50);
 //    stroke(255, 150, 0, 150);
     strokeWeight(4);
@@ -82,7 +90,7 @@ function draw() {
     rect(planeA.x - largoRA*1/3, planeA.y - raDistance, largoRA, raDistance*2);
     rect(planeB.x - largoRA*2/3, planeB.y - raDistance, largoRA, raDistance*2);
   }
-
+*/
   // Mensajes TCAS
   fill("blue");
   textSize(18);
