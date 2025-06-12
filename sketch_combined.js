@@ -2,8 +2,8 @@ let planeA, planeB;
 let state = "normal";
 let alertDistance = 120;
 let raDistance = 85;
-let largoRA = 85 * 1.5;
-let largoTA = 120 * 1.5;
+let largoRA = raDistance * 1.5;
+let largoTA = alertDistance * 1.5;
 
 // 🎧 Archivos de sonido
 let trafficAlertSound, resolutionAlertSound;
@@ -15,7 +15,7 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(1200, 600);
+  createCanvas(1400, 800);
   planeA = { x: 100, y: 180, vx: 0.5};
   planeB = { x: 900, y: 220, vx: -0.5};
   textFont('monospace');
@@ -25,7 +25,7 @@ function draw() {
   background(50, 255, 255); //fondo del canva
   fill("red");
   textSize(20);
-  text("TCAS DEMO V4", 10, 20);
+  text("TCAS DEMO V5", 10, 20);
   
   //Calculo de la distancia entre las aeronaves A y B
   let distance = dist(planeA.x, planeA.y, planeB.x, planeB.y);
