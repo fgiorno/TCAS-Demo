@@ -2,8 +2,8 @@ let planeA, planeB;
 let state = "normal";
 let alertDistance = 120;
 let raDistance = 85;
-let largoRA = raDistance * 1.5;
-let largoTA = alertDistance * 1.5;
+let largoRA = raDistance * 4;
+let largoTA = alertDistance * 4;
 
 // 🎧 Archivos de sonido
 let trafficAlertSound, resolutionAlertSound;
@@ -25,7 +25,7 @@ function draw() {
   background(50, 255, 255); //fondo del canva
   fill("red");
   textSize(20);
-  text("TCAS DEMO V8", 10, 20);
+  text("TCAS DEMO V9", 10, 20);
   
   //Calculo de la distancia entre las aeronaves A y B
   let distance = dist(planeA.x, planeA.y, planeB.x, planeB.y);
@@ -69,8 +69,8 @@ function draw() {
     //noFill();
     //ellipse(planeA.x, planeA.y, alertDistance * 2);
     //ellipse(planeB.x, planeB.y, alertDistance * 2);
-    rect(planeA.x - largoTA*1/3, planeA.y - alertDistance, largoTA, alertDistance);
-    rect(planeB.x - largoTA*2/3, planeB.y - alertDistance, largoTA, alertDistance);
+    rect(planeA.x - largoTA*1/3, planeA.y - alertDistance, largoTA, alertDistance*2);
+    rect(planeB.x - largoTA*2/3, planeB.y - alertDistance, largoTA, alertDistance*2);
   }
 
   if (state === "RA" || state === "evasive") {
@@ -79,8 +79,8 @@ function draw() {
     fill(255,0,0,50);
     //ellipse(planeA.x, planeA.y, raDistance * 2);
     //ellipse(planeB.x, planeB.y, raDistance * 2);
-    rect(planeA.x - largoRA*1/3, planeA.y - raDistance, largoRA, raDistance);
-    rect(planeB.x + largoRA*2/3, planeB.y - raDistance, largoRA, raDistance);
+    rect(planeA.x - largoRA*1/3, planeA.y - raDistance, largoRA, raDistance*2);
+    rect(planeB.x + largoRA*2/3, planeB.y - raDistance, largoRA, raDistance*2);
   }
 
   // Mensajes TCAS
