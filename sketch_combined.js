@@ -15,9 +15,9 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(1400, 800);
-  planeA = { x: 100, y: 180, vx: 0.5};
-  planeB = { x: 900, y: 220, vx: -0.5};
+  createCanvas(1400, 700);
+  planeA = { x: 100, y: 320, vx: 0.5};
+  planeB = { x: 1300, y: 370, vx: -0.5};
   textFont('monospace');
 }
 
@@ -25,7 +25,7 @@ function draw() {
   background(50, 255, 255); //fondo del canva
   fill("red");
   textSize(20);
-  text("TCAS DEMO V5", 10, 20);
+  text("TCAS DEMO V6", 10, 20);
   
   //Calculo de la distancia entre las aeronaves A y B
   let distance = dist(planeA.x, planeA.y, planeB.x, planeB.y);
@@ -69,8 +69,8 @@ function draw() {
     //noFill();
     //ellipse(planeA.x, planeA.y, alertDistance * 2);
     //ellipse(planeB.x, planeB.y, alertDistance * 2);
-    rect(planeA.x + largoTA*2/3, planeA.y - alertDistance, largoTA, alertDistance * 2);
-    rect(planeB.x - largoTA*2/3, planeB.y * alertDistance, largoTA, alertDistance * 2);
+    rect(planeA.x - largoTA*1/3, planeA.y - alertDistance, largoTA, alertDistance * 2);
+    rect(planeB.x + largoTA*2/3, planeB.y - alertDistance, largoTA, alertDistance * 2);
   }
 
   if (state === "RA" || state === "evasive") {
@@ -79,9 +79,9 @@ function draw() {
     fill(255,0,0,50);
     //ellipse(planeA.x, planeA.y, raDistance * 2);
     //ellipse(planeB.x, planeB.y, raDistance * 2);
-    rect(planeA.x + largoRA, planeA.y - raDistance*2/3, largoRA, raDistance * 2);
-    rect(planeB.x - largoRA, planeB.y * raDistance*2/3, largoRA, raDistance * 2);
-}
+    rect(planeA.x - largoRA*1/3, planeA.y - raDistance, largoRA, raDistance * 2);
+    rect(planeB.x + largoRA*2/3, planeB.y - raDistance, largoRA, raDistance * 2);
+  }
 
   // Mensajes TCAS
   fill("blue");
