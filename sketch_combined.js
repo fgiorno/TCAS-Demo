@@ -15,7 +15,7 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(800, 400);
+  createCanvas(1800, 800);
   planeA = { x: 100, y: 200, vx: 0.5};
   planeB = { x: 700, y: 250, vx: -0.5};
   textFont('monospace');
@@ -67,10 +67,10 @@ function draw() {
     strokeWeight(4);
     fill(255,255,50,50);
     //noFill();
-    //ellipse(planeA.x, planeA.y, alertDistance * 2);
-    //ellipse(planeB.x, planeB.y, alertDistance * 2);
-    rect(planeA.x - largoTA*2/3, planeA.y + alertDistance, largoTA, alertDistance * 2);
-    rect(planeB.x - largoTA*2/3, planeB.y + alertDistance, largoTA, alertDistance * 2);
+    ellipse(planeA.x, planeA.y, alertDistance * 2);
+    ellipse(planeB.x, planeB.y, alertDistance * 2);
+    //rect(planeA.x - largoTA*2/3, planeA.y + alertDistance, largoTA, alertDistance * 2);
+    //rect(planeB.x - largoTA*2/3, planeB.y + alertDistance, largoTA, alertDistance * 2);
   }
 
   if (state === "RA" || state === "evasive") {
