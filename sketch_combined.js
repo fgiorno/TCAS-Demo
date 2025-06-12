@@ -25,7 +25,7 @@ function draw() {
   background(50, 255, 255); //fondo del canva
   fill("blue");
   textSize(20);
-  text("TCAS DEMO", 10, 20);
+  text("TCAS DEMO v2", 10, 20);
   
   //Calculo de la distancia entre las aeronaves A y B
   let distance = dist(planeA.x, planeA.y, planeB.x, planeB.y);
