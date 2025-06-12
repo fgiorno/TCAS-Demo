@@ -80,7 +80,7 @@ function draw() {
     //ellipse(planeA.x, planeA.y, raDistance * 2);
     //ellipse(planeB.x, planeB.y, raDistance * 2);
     rect(planeA.x - largoRA*1/3, planeA.y - raDistance, largoRA, raDistance*2);
-    rect(planeB.x + largoRA*2/3, planeB.y - raDistance, largoRA, raDistance*2);
+    rect(planeB.x - largoRA*2/3, planeB.y - raDistance, largoRA, raDistance*2);
   }
 
   // Mensajes TCAS
