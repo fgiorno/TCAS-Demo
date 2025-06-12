@@ -25,7 +25,7 @@ function draw() {
   background(50, 255, 255); //fondo del canva
   fill("red");
   textSize(20);
-  text("TCAS DEMO V6", 10, 20);
+  text("TCAS DEMO V7", 10, 20);
   
   //Calculo de la distancia entre las aeronaves A y B
   let distance = dist(planeA.x, planeA.y, planeB.x, planeB.y);
@@ -70,7 +70,7 @@ function draw() {
     //ellipse(planeA.x, planeA.y, alertDistance * 2);
     //ellipse(planeB.x, planeB.y, alertDistance * 2);
     rect(planeA.x - largoTA*1/3, planeA.y - alertDistance, largoTA, alertDistance * 2);
-    rect(planeB.x + largoTA*2/3, planeB.y - alertDistance, largoTA, alertDistance * 2);
+    rect(planeB.x - largoTA*2/3, planeB.y - alertDistance, largoTA, alertDistance * 2);
   }
 
   if (state === "RA" || state === "evasive") {
